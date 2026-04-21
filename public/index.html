@@ -1,34 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Landslide Monitoring</title>
+  <title>Landslide Monitoring System</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f5f5f5;
+    }
+
+    h1 {
+      background: #222;
+      color: white;
+      padding: 15px;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 60%;
+      background: white;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      font-size: 18px;
+    }
+
+    th {
+      background: #333;
+      color: white;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    #buzzerBtn {
+      margin-top: 20px;
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+  </style>
 </head>
+
 <body>
 
-<h2>Soil Moisture</h2>
-<table border="1">
-<tr><th>Sensor</th><th>Value</th></tr>
-<tr><td>Soil 1</td><td id="soil1"></td></tr>
-<tr><td>Soil 2</td><td id="soil2"></td></tr>
-</table>
+<h1>🌍 Landslide Monitoring System</h1>
 
-<h2>Distance</h2>
-<table border="1">
-<tr><th>Sensor</th><th>Value</th></tr>
-<tr><td>Distance 1</td><td id="dist1"></td></tr>
-<tr><td>Distance 2</td><td id="dist2"></td></tr>
-</table>
+<div class="section">
+  <h2>🌱 Soil Moisture (%)</h2>
+  <table>
+    <tr>
+      <th>Sensor</th>
+      <th>Value (%)</th>
+    </tr>
+    <tr>
+      <td>Soil Sensor 1</td>
+      <td id="soil1">--</td>
+    </tr>
+    <tr>
+      <td>Soil Sensor 2</td>
+      <td id="soil2">--</td>
+    </tr>
+  </table>
+</div>
 
-<h2>Gyroscope</h2>
-<table border="1">
-<tr><th>Axis</th><th>Value</th></tr>
-<tr><td>X</td><td id="tiltX"></td></tr>
-<tr><td>Y</td><td id="tiltY"></td></tr>
-<tr><td>Z</td><td id="tiltZ"></td></tr>
-</table>
+<div class="section">
+  <h2>📏 Ground Distance (cm)</h2>
+  <table>
+    <tr>
+      <th>Sensor</th>
+      <th>Distance (cm)</th>
+    </tr>
+    <tr>
+      <td>Ultrasonic 1</td>
+      <td id="dist1">--</td>
+    </tr>
+    <tr>
+      <td>Ultrasonic 2</td>
+      <td id="dist2">--</td>
+    </tr>
+  </table>
+</div>
 
-<br>
-<button id="buzzerBtn" onclick="toggleBuzzer()">Loading...</button>
+<div class="section">
+  <h2>📐 Tilt Angle (Degrees)</h2>
+  <table>
+    <tr>
+      <th>Axis</th>
+      <th>Angle (°)</th>
+    </tr>
+    <tr>
+      <td>Roll (X)</td>
+      <td id="tiltX">--</td>
+    </tr>
+    <tr>
+      <td>Pitch (Y)</td>
+      <td id="tiltY">--</td>
+    </tr>
+  </table>
+</div>
+
+<div class="section">
+  <button id="buzzerBtn" onclick="toggleBuzzer()">Loading...</button>
+</div>
 
 <script src="script.js"></script>
 
