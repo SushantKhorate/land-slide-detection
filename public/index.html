@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Landslide Monitoring</title>
+</head>
+<body>
+
+<h2>Soil Moisture</h2>
+<table border="1">
+<tr><th>Sensor</th><th>Value</th></tr>
+<tr><td>Soil 1</td><td id="soil1"></td></tr>
+<tr><td>Soil 2</td><td id="soil2"></td></tr>
+</table>
+
+<h2>Distance</h2>
+<table border="1">
+<tr><th>Sensor</th><th>Value</th></tr>
+<tr><td>Distance 1</td><td id="dist1"></td></tr>
+<tr><td>Distance 2</td><td id="dist2"></td></tr>
+</table>
+
+<h2>Gyro</h2>
+<table border="1">
+<tr><th>Axis</th><th>Value</th></tr>
+<tr><td>X</td><td id="tiltX"></td></tr>
+<tr><td>Y</td><td id="tiltY"></td></tr>
+</table>
+
+<br>
+<button onclick="toggleBuzzer()">Toggle Buzzer</button>
+
+<script>
+async function loadData() {
+  const res = await fetch("/data");
+  const data = await res.json();
+
+  document.getElementById("soil1").innerText = data.soil1;
+  document.getElementById("soil2").innerText = data.soil2;
+
+  document.getElementById("dist1").innerText = data.dist1;
+  document.getElementById("dist2").innerText = data.dist2;
+
+  document.getElementById("tiltX").innerText = data.tiltX;
+  document.getElementById("tiltY").innerText = data.tiltY;
+}
+
+async function toggleBuzzer() {
+  await fetch("/buzzer", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({ state: 1 }) // simple ON
+  });
+}
+
+setInterval(loadData, 2000);
+</script>
+
+</body>
+</html>
