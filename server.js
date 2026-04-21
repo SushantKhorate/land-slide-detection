@@ -31,6 +31,7 @@ app.post("/update", (req, res) => {
     sensorData.dist2 = data.dist2 ?? sensorData.dist2;
     sensorData.tiltX = data.tiltX ?? sensorData.tiltX;
     sensorData.tiltY = data.tiltY ?? sensorData.tiltY;
+    sensorData.tiltZ = data.tiltZ ?? sensorData.tiltZ;
 
     console.log("Updated Data:", sensorData);
 
