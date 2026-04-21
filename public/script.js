@@ -55,5 +55,5 @@ function updateButton() {
 }
 
 // -------- AUTO REFRESH --------
-setInterval(loadData, 2000);
+setInterval(loadData, 1000);
 loadData();
