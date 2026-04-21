@@ -55,5 +55,22 @@ function updateButton() {
 }
 
 // -------- AUTO REFRESH --------
-setInterval(loadData, 1000);
-loadData();
+async function init() {
+  try {
+    // Get buzzer state first
+    const res = await fetch("/buzzer");
+    const data = await res.json();
+
+    buzzerState = data.buzzer;
+    updateButton();
+
+  } catch (err) {
+    console.log("Init error:", err);
+  }
+
+  // Then start normal updates
+  loadData();
+  setInterval(loadData, 1000);
+}
+
+init();
